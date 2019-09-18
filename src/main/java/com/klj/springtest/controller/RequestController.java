@@ -27,7 +27,7 @@ public class RequestController {
     @GetMapping("/hello")
     public String index(UserVo user){
 
-        int index = user.getIndex();
+        int index = user.getId();
         String s = "2";
         System.out.println(s);
         String message = ReturnMessageEnum.getMessageByIndex(index);
