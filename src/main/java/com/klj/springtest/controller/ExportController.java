@@ -1,13 +1,10 @@
 package com.klj.springtest.controller;
 
-import com.klj.springtest.enums.ReturnMessageEnum;
 import com.klj.springtest.util.poi.WordDocUtils;
 import com.klj.springtest.util.poi.WordUtils;
 import com.klj.springtest.util.xml.WordKit;
-import com.klj.springtest.vo.UserVo;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.ResourceUtils;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +17,7 @@ import java.util.*;
 @RestController
 public class ExportController {
 
-    @RequestMapping("/export")
+    @GetMapping("/export")
     public void testExportWord(HttpServletResponse response) throws Exception {
         File tmpFile = null;
         try {
@@ -49,7 +46,7 @@ public class ExportController {
 
     }
 
-    @RequestMapping("/export2")
+    @GetMapping("/export2")
     public void testExportWord2(HttpServletResponse response) throws Exception {
 
         File picFile = null;
@@ -105,7 +102,7 @@ public class ExportController {
 
     }
 
-    @RequestMapping("/export3")
+    @GetMapping("/export3")
     public void testExportWord3(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         WordKit wordKit = new WordKit();

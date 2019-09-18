@@ -7,6 +7,7 @@ import com.klj.springtest.util.xml.WordKit;
 import com.klj.springtest.vo.UserVo;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.ResourceUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,7 +24,7 @@ public class RequestController {
   /*  @Value("${urls}")
     private String urls;*/
 
-    @RequestMapping("/hello")
+    @GetMapping("/hello")
     public String index(UserVo user){
 
         int index = user.getIndex();

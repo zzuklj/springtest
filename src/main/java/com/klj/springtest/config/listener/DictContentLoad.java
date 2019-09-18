@@ -1,18 +1,12 @@
-package com.klj.springtest.config.springlistener;
+package com.klj.springtest.config.listener;
 
 import com.klj.springtest.mapper.UserMapper;
 import com.klj.springtest.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
-import org.springframework.context.event.ContextRefreshedEvent;
-import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 /**
  * @author klj
