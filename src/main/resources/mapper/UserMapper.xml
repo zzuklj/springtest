@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.klj.springtest.mapper.UserMapper" >
+    <resultMap id="BaseResultMap" type="com.klj.springtest.model.User" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="username" property="userName" jdbcType="VARCHAR" />
+        <result column="age" property="age" jdbcType="INTEGER" />
+        <result column="description" property="description" typeHandler="com.klj.springtest.util.typehandler.MybatisJsonTypeHandler"/>
+        <result column="ctm" property="ctm"  />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, username, description, age
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        <include refid="Base_Column_List" />
+        from t_user
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectAll" resultMap="BaseResultMap" >
+        select
+        <include refid="Base_Column_List" />
+        from t_user
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+        delete from t_user
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insert" parameterType="com.klj.springtest.model.User" >
+        insert into t_user (id, username,
+        age,description, ctm)
+        values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR},
+        #{age,jdbcType=INTEGER}, #{description,typeHandler=com.klj.springtest.util.typehandler.MybatisJsonTypeHandler},
+        #{ctm})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.klj.springtest.model.User" >
+        insert into t_user
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="userName != null" >
+                username,
+            </if>
+            <if test="age != null" >
+                age,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="userName != null" >
+                #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null" >
+                #{age,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.klj.springtest.model.User" >
+        update t_user
+        <set >
+            <if test="userName != null" >
+                username = #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null" >
+                age = #{age,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.klj.springtest.model.User" >
+        update t_user
+        set username = #{userName,jdbcType=VARCHAR},
+        age = #{age,jdbcType=INTEGER}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>

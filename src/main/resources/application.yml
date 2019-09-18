@@ -1,0 +1,55 @@
+#mybatis
+mybatis:
+   mapper-locations : classpath:mapper/**/*.xml
+   type-aliases-package : com.klj.springtest
+
+server:
+  port: 9091
+  max-http-header-size: 102400
+
+http:
+  maxTotal: 100
+  defaultMaxPerRoute : 20
+  connectTimeout: 1000
+  connectionRequestTimeout: 500
+  socketTimeout: 10000
+  staleConnectionCheckEnabled: true
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://127.0.0.1:3306/db_test?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&useSSL=false
+    username: root
+    password: root
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+  redis:
+    database: 6
+    host: 127.0.0.1
+    port: 6379
+    password: 12345
+    timeout: 5000
+    maxTotal: 500
+    maxIdle: 5
+    maxWaitMillis: 100000
+  session:
+      store-type: none
+  boot:
+   admin:
+    url: http://localhost:8080
+    client:
+      name: springtest
+
+#============== kafka ===================
