@@ -46,6 +46,12 @@ spring:
     maxWaitMillis: 100000
   session:
       store-type: none
+
+  data:
+    elasticsearch:
+      cluster-nodes: 192.168.137.55:9300
+      cluster-name: my-es-cluster
+
   boot:
    admin:
     url: http://localhost:8080

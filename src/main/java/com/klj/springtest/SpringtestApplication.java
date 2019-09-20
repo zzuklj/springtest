@@ -11,6 +11,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SpringtestApplication {
 
+	static {
+		System.setProperty("es.set.netty.runtime.available.processors","false");
+	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(SpringtestApplication.class, args);
 	}
