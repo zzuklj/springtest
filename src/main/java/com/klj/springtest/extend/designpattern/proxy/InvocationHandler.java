@@ -1,4 +1,4 @@
-package com.klj.springtest.extend.proxy;
+package com.klj.springtest.extend.designpattern.proxy;
 
 import java.lang.reflect.Method;
 
